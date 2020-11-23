@@ -1,0 +1,18 @@
+
+#端口号
+server:
+  port: 8082
+
+spring:
+  user:
+    name: my-starter-name
+    enabled: true
+
+#访问路径
+#server.servlet.context-path=/learn
+
+#数据库配置
+#spring.datasource.url=jdbc:mysql://localhost:3306/test
+#spring.datasource.username=root
+#spring.datasource.password=root
+#spring.datasource.driver-class-name=com.mysql.jdbc.Driver
