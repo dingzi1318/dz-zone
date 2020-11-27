@@ -1,4 +1,4 @@
-package com.example.feign.decoder;
+package com.demo.feign.decoder;
 
 import java.io.IOException;
 

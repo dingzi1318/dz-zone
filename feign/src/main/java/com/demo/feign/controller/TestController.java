@@ -1,13 +1,11 @@
-package com.example.feign.controller;
+package com.demo.feign.controller;
 
+import com.demo.feign.client.StudentRemoteClient;
+import com.demo.feign.client.UserRemoteClient;
+import com.demo.feign.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import com.example.api.request.StudentRequest;
-import com.example.feign.client.StudentRemoteClient;
-import com.example.feign.client.UserRemoteClient;
-import com.example.feign.dto.User;
 
 @RestController
 public class TestController {

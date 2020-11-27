@@ -1,9 +1,7 @@
-package com.example.api;
+package com.demo.feign.service;
 
 import org.springframework.cloud.openfeign.SpringQueryMap;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import com.example.api.request.StudentRequest;
 
 public interface StudentRemoteService {
 

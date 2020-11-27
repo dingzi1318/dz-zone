@@ -1,8 +1,13 @@
 package com.user.controller;
 
-import com.user.dto.User;
+import com.user.model.UserInfo;
+import com.user.service.IUserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Description TODO
@@ -12,9 +17,23 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class UserController {
 
+    @Autowired
+    private IUserService userService;
+
     @GetMapping(value = "/user/get")
-    public User getUser(Long id) {
-        return new User(123465454111L, "钉子使用Ribbon发起的调用");
+    public UserInfo getUser(Long id) {
+        UserInfo userInfo = userService.selectById(id);
+        return userInfo;
+    }
+
+    @PostMapping(value = "user/save")
+    public Long insert(UserInfo userInfo) {
+        return userService.insert(userInfo);
+    }
+
+    @PostMapping(value = "update")
+    public List<Long> update(String oldName, String newName) {
+        return userService.updateName(oldName, newName);
     }
 
 }

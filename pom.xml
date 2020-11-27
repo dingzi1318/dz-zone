@@ -13,6 +13,7 @@
         <module>user-service</module>
 		<module>hystrix</module>
 		<module>feign</module>
+		<module>feign-api</module>
 	</modules>
 
 	<parent>

@@ -1,4 +1,4 @@
-package com.example.feign.client;
+package com.demo.feign.client;
 
 import org.springframework.stereotype.Component;
 

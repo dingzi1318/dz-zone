@@ -12,12 +12,12 @@
             <property name="addRemarkComments" value="true"/>
         </commentGenerator>
 
-        <jdbCconnector driverclass="com.mysql.jdbc.Driver"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
             connectionURL="jdbc:mysql://localhost:3306/dz_users?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;zeroDateTimeBehavior=convertToNull"
             userId="root"
             password="123456"/>
 
-        <javaModelGenerator targetPackage="com.user.model" targetProject="/src/main/java">
+        <javaModelGenerator targetPackage="com.user.model" targetProject="../user-service/src/main/java">
             <property name="strimStrings" value="true"/>
         </javaModelGenerator>
 
@@ -26,7 +26,7 @@
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.user.mapper" targetProject="src/main/java/" />
 
         <table tableName="user_info" domainObjectName="UserInfo">
-            <generatedKey column="id" sqlStatement="MySql"/>
+            <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>
 </generatorConfiguration>
