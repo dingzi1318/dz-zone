@@ -4,8 +4,8 @@ import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @Data
-@ConfigurationProperties("some.service")
-public class SomeServiceProperties {
+@ConfigurationProperties("wrap.service")
+public class WrapProperties {
 
     private String before;
 

@@ -1,4 +1,4 @@
-package com.daojia.web.workerconversion.idempotent.service;
+package com.user.service;
 
 import javax.servlet.http.HttpServletRequest;
 

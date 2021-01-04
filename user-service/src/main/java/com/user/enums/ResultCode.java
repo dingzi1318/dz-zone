@@ -1,11 +1,13 @@
 package com.user.enums;
 
+import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
+
 /**
  * 返回结果状态码枚举
  *
  * @author dingzi
  */
-public enum ResultCodeEnum {
+public enum ResultCode implements CommonResultCode {
 
     /**
      * 0-成功
@@ -27,7 +29,13 @@ public enum ResultCodeEnum {
      */
     UNAUTHENTICATED(-10002, "未登录认证"),
 
-    REPEAT_REQUEST(-10003, "重复提交")
+    /**
+     * 重复提交
+     */
+    REPEAT_REQUEST(-10003, "重复提交"),
+
+
+    SYSTEM_EXCEPTION(-99999, "系统异常")
     ;
 
     private final int code;
@@ -35,16 +43,19 @@ public enum ResultCodeEnum {
     private final String message;
 
 
-    ResultCodeEnum(int code, String message) {
+    ResultCode(int code, String message) {
         this.code = code;
         this.message = message;
     }
 
+
+    @Override
     public int getCode() {
-        return code;
+        return this.code;
     }
 
+    @Override
     public String getMessage() {
-        return message;
+        return this.message;
     }
 }

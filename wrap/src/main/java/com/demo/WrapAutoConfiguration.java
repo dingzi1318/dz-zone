@@ -10,23 +10,23 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnClass(SomeService.class)
-@EnableConfigurationProperties(SomeServiceProperties.class)
-public class SomeServiceAutoConfiguration {
+@ConditionalOnClass(WrapService.class)
+@EnableConfigurationProperties(WrapProperties.class)// 使@ConfigurationProperties注解生效
+public class WrapAutoConfiguration {
 
     @Autowired
-    private SomeServiceProperties properties;
+    private WrapProperties properties;
 
     @Bean
-    @ConditionalOnProperty(name = "some.service.enable", havingValue = "true", matchIfMissing = true)
-    public SomeService someService() {
-        return new SomeService(properties.getBefore(), properties.getAfter());
+    @ConditionalOnProperty(name = "wrap.service.enable", havingValue = "true", matchIfMissing = true)
+    public WrapService someService() {
+        return new WrapService(properties.getBefore(), properties.getAfter());
     }
 
     @Bean
     @ConditionalOnMissingBean
-    public SomeService someService2() {
-        return new SomeService("", "");
+    public WrapService someService2() {
+        return new WrapService("", "");
     }
 
 }

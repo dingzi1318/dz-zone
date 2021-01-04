@@ -1,2 +1,8 @@
-package com.user.enums;public class CommonResultCode {
+package com.user.enums;
+
+public interface CommonResultCode {
+
+    int getCode();
+
+    String getMessage();
 }

@@ -1,6 +1,5 @@
-package com.user.interceptors;
+package com.user.interceptor;
 
-import com.alibaba.fastjson.JSON;
 import com.user.plugin.PluginProcessor;
 import com.user.plugin.factory.PluginProcessorFactory;
 import org.apache.ibatis.executor.Executor;

@@ -1,5 +1,7 @@
 package com.user.controller;
 
+import com.user.annotation.AutoIdempotent;
+import com.user.context.ApplicationContextProvider;
 import com.user.model.UserInfo;
 import com.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,16 +22,28 @@ public class UserController {
     @Autowired
     private IUserService userService;
 
+    @Autowired
+    private ApplicationContextProvider contextProvider;
+
     @GetMapping(value = "/user/get")
     public UserInfo getUser(Long id) {
         UserInfo userInfo = userService.selectById(id);
         return userInfo;
     }
 
-    @PostMapping(value = "user/save")
+    /**
+     * 幂等性校验
+     *
+     * @param userInfo
+     * @return
+     */
+    @AutoIdempotent
+    @PostMapping(value = "users/save")
     public Long insert(UserInfo userInfo) {
         return userService.insert(userInfo);
     }
+
+
 
     @PostMapping(value = "update")
     public List<Long> update(String oldName, String newName) {

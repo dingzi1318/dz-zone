@@ -1,4 +1,6 @@
-package com.user.exceptions;
+package com.user.exception;
+
+import com.user.enums.ResultCode;
 
 /**
  * 自定义业务异常
@@ -21,6 +23,11 @@ public class BusinessException extends RuntimeException {
         this.code = code;
     }
 
+    public BusinessException(ResultCode codeEnum) {
+        super(codeEnum.getMessage());
+        this.code = codeEnum.getCode();
+    }
+
 
     public BusinessException(String message) {
         super(message);
@@ -37,4 +44,10 @@ public class BusinessException extends RuntimeException {
     public BusinessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
+
+    public int getCode() {
+        return code;
+    }
+
+
 }
