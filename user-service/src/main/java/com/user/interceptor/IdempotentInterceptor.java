@@ -2,7 +2,7 @@ package com.user.interceptor;
 
 import com.user.annotation.AutoIdempotent;
 import com.user.enums.ResultCode;
-import com.user.exception.BusinessException;
+import com.user.exception.WebBusinessException;
 import com.user.service.ITokenService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +43,7 @@ public class IdempotentInterceptor extends HandlerInterceptorAdapter {
         try {
             return tokenService.checkToken(request);
         } catch (Exception e) {
-            throw new BusinessException(ResultCode.REPEAT_REQUEST);
+            throw new WebBusinessException(ResultCode.REPEAT_REQUEST);
         }
 
     }

@@ -1,2 +1,9 @@
-package com.user.annotation;public @interface PrintTime {
+package com.user.annotation;
+
+import java.lang.annotation.*;
+
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface PrintTime {
 }

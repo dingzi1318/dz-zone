@@ -1,7 +1,10 @@
 package com.user.aspect;
 
 import com.user.annotation.PrintTime;
+import com.user.annotation.RpcServiceBehavior;
 import com.user.dto.ApiResult;
+import com.user.dto.RpcResult;
+import com.user.exception.RpcBusinessException;
 import com.user.exception.WebBusinessException;
 import lombok.extern.slf4j.Slf4j;
 import org.aopalliance.aop.Advice;
@@ -18,12 +21,13 @@ import org.springframework.stereotype.Component;
 import java.lang.reflect.Method;
 
 /**
- * 切点切面
+ * rpc异常处理切点切面
  *
+ * @author dingzi
  */
 @Slf4j
 @Component
-public class PrintPointCutAdvisor extends DefaultPointcutAdvisor {
+public class RpcExceptionPointCutAdvisor extends DefaultPointcutAdvisor {
 
     @Override
     public Pointcut getPointcut() {
@@ -43,11 +47,14 @@ public class PrintPointCutAdvisor extends DefaultPointcutAdvisor {
             try {
                 return methodInvocation.proceed();
             } catch (Throwable throwable) {
-                if (throwable instanceof WebBusinessException) {
-
+                if (throwable instanceof RpcBusinessException) {
+                    RpcBusinessException rpcBusinessException = (RpcBusinessException) throwable;
+                    log.error("执行rpc调用异常, method:{}", method.getName(), rpcBusinessException.getMessage());
+                    return RpcResult.fail(rpcBusinessException.getCode(), rpcBusinessException.getMessage());
+                } else {
+                    return RpcResult.fail("rpc调用异常");
                 }
             }
-            return null;
         }
     }
 
@@ -55,7 +62,7 @@ public class PrintPointCutAdvisor extends DefaultPointcutAdvisor {
 
         @Override
         public ClassFilter getClassFilter() {
-            return new AnnotationClassFilter(PrintTime.class);
+            return new AnnotationClassFilter(RpcServiceBehavior.class);
         }
 
         @Override
@@ -64,7 +71,7 @@ public class PrintPointCutAdvisor extends DefaultPointcutAdvisor {
 
                 @Override
                 public boolean matches(Method method, Class<?> aClass) {
-                    return method.getReturnType() == ApiResult.class;
+                    return method.getReturnType() == RpcResult.class;
                 }
             };
 

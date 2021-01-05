@@ -7,7 +7,7 @@ import com.user.enums.ResultCode;
  *
  * @author dingzi
  */
-public class BusinessException extends RuntimeException {
+public class WebBusinessException extends RuntimeException {
 
     /** 状态码*/
     private int code;
@@ -15,33 +15,33 @@ public class BusinessException extends RuntimeException {
     /**
      * 默认的业务异常
      */
-    public BusinessException() {
+    public WebBusinessException() {
     }
 
-    public BusinessException(int code, String message) {
+    public WebBusinessException(int code, String message) {
         super(message);
         this.code = code;
     }
 
-    public BusinessException(ResultCode codeEnum) {
+    public WebBusinessException(ResultCode codeEnum) {
         super(codeEnum.getMessage());
         this.code = codeEnum.getCode();
     }
 
 
-    public BusinessException(String message) {
+    public WebBusinessException(String message) {
         super(message);
     }
 
-    public BusinessException(String message, Throwable cause) {
+    public WebBusinessException(String message, Throwable cause) {
         super(message, cause);
     }
 
-    public BusinessException(Throwable cause) {
+    public WebBusinessException(Throwable cause) {
         super(cause);
     }
 
-    public BusinessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
+    public WebBusinessException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
     }
 

@@ -1,7 +1,10 @@
 package com.user.controller;
 
 import com.user.annotation.AutoIdempotent;
+import com.user.annotation.PrintTime;
 import com.user.context.ApplicationContextProvider;
+import com.user.dto.ApiResult;
+import com.user.dto.RpcResult;
 import com.user.model.UserInfo;
 import com.user.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +29,10 @@ public class UserController {
     private ApplicationContextProvider contextProvider;
 
     @GetMapping(value = "/user/get")
-    public UserInfo getUser(Long id) {
-        UserInfo userInfo = userService.selectById(id);
-        return userInfo;
+    @PrintTime
+    public ApiResult getUser(Long id) {
+        RpcResult<UserInfo> rpcResult = userService.selectById(id);
+        return ApiResult.success(rpcResult.getData());
     }
 
     /**

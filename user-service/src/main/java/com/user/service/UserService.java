@@ -1,5 +1,8 @@
 package com.user.service;
 
+import com.user.annotation.RpcServiceBehavior;
+import com.user.dto.RpcResult;
+import com.user.exception.RpcBusinessException;
 import com.user.mapper.UserInfoMapper;
 import com.user.model.UserInfo;
 import com.user.model.UserInfoExample;
@@ -14,6 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
+@RpcServiceBehavior
 public class UserService implements IUserService {
 
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
@@ -22,8 +26,12 @@ public class UserService implements IUserService {
     private UserInfoMapper userInfoMapper;
 
     @Override
-    public UserInfo selectById(Long id) {
-        return userInfoMapper.selectByPrimaryKey(id);
+    public RpcResult<UserInfo> selectById(Long id) {
+        if (id == null || id <= 0L) {
+            throw new RpcBusinessException(-1, "ID参数非法");
+        }
+        UserInfo userInfo = userInfoMapper.selectByPrimaryKey(id);
+        return RpcResult.success(userInfo);
     }
 
     @Override
