@@ -1,4 +1,4 @@
-package com.user.service;
+package com.user.service.impl;
 
 import com.user.annotation.RpcServiceBehavior;
 import com.user.dto.RpcResult;
@@ -6,6 +6,7 @@ import com.user.exception.RpcBusinessException;
 import com.user.mapper.UserInfoMapper;
 import com.user.model.UserInfo;
 import com.user.model.UserInfoExample;
+import com.user.service.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

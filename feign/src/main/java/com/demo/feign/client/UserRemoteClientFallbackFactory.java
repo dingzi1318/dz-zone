@@ -1,10 +1,10 @@
 package com.demo.feign.client;
 
+import com.demo.feign.dto.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
-import com.example.feign.dto.User;
 
 import feign.hystrix.FallbackFactory;
 
@@ -20,13 +20,9 @@ public class UserRemoteClientFallbackFactory implements FallbackFactory<UserRemo
 	@Override
 	public UserRemoteClient create(Throwable cause) {
 		
-		return new UserRemoteClient() {
-			
-			@Override
-			public User getUser(int id) {
-				logger.error("UserRemoteClient.getUser异常", cause);
-				return new User(0, "默认");
-			}
+		return id -> {
+			logger.error("UserRemoteClient.getUser异常", cause);
+			return new User(0L, "默认");
 		};
 	}
 }

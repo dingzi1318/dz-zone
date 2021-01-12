@@ -13,7 +13,7 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-            connectionURL="jdbc:mysql://localhost:3306/dz_users?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;zeroDateTimeBehavior=convertToNull"
+            connectionURL="jdbc:mysql://localhost:3306/sharding_jdbc?useUnicode=true&amp;characterEncoding=utf8&amp;rewriteBatchedStatements=true&amp;zeroDateTimeBehavior=convertToNull"
             userId="root"
             password="123456"/>
 
@@ -25,7 +25,7 @@
 
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.user.mapper" targetProject="src/main/java/" />
 
-        <table tableName="user_info" domainObjectName="UserInfo">
+        <table tableName="t_job_mapping_1" domainObjectName="JobMapping">
             <generatedKey column="id" sqlStatement="MySql" identity="true"/>
         </table>
     </context>

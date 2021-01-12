@@ -9,10 +9,14 @@ wrap:
 server:
   port: 8084
 
+
+
 #服务名
 spring:
   application:
     name: user-service
+  main:
+    allow-bean-definition-overriding: true
 
   redis:
     databse: 1
@@ -29,11 +33,11 @@ spring:
 
 
   # 数据源配置
-  datasource:
-    username: root
-    password: 123456
-    url: jdbc:mysql://localhost:3306/dz_users?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
-    dirver-class-name: com.mysql.jdbc.Driver
+#  datasource:
+#    username: root
+#    password: 123456
+#    url: jdbc:mysql://localhost:3306/dz_users?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
+#    dirver-class-name: com.mysql.jdbc.Driver
 
 #数据库配置
 mybatis:
@@ -49,7 +53,3 @@ eureka:
   #自定义服务实例ID: 服务名+IP地址+端口号
   instance:
     instance-id: ${spring.application.name}:${spring.cloud.client.ip-address}:${server.port}
-
-
-
-

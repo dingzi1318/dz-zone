@@ -1,5 +1,6 @@
-package com.user.service;
+package com.user.service.impl;
 
+import com.user.service.ITokenService;
 import com.user.util.RedisUtil;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;

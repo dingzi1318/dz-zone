@@ -41,7 +41,7 @@ public class UserController {
      * @param userInfo
      * @return
      */
-    @AutoIdempotent
+//    @AutoIdempotent
     @PostMapping(value = "users/save")
     public Long insert(UserInfo userInfo) {
         return userService.insert(userInfo);
