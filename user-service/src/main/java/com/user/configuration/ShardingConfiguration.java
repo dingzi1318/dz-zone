@@ -51,6 +51,8 @@ public class ShardingConfiguration {
 
         // 配置分片规则
         ShardingRuleConfiguration shardingRuleConfig = new ShardingRuleConfiguration();
+        // 设置默认数据源
+        shardingRuleConfig.setDefaultDataSourceName("ds0");
         shardingRuleConfig.getTableRuleConfigs().add(jobTableRuleConfig);
 
         // 获取数据源对象
