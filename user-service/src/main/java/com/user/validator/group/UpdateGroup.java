@@ -1,4 +1,4 @@
-package com.demo.validator.group;
+package com.user.validator.group;
 
 public interface UpdateGroup {
 }

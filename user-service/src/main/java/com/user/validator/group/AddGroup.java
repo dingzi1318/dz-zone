@@ -1,4 +1,4 @@
-package com.demo.validator.group;
+package com.user.validator.group;
 
 /**
  * 新增账号分组

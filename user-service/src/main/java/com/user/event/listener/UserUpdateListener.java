@@ -24,6 +24,7 @@ public class UserUpdateListener {
     @Async
     @TransactionalEventListener(fallbackExecution = true)
     public void onApplication(ApplicationEvent event) {
+        logger.info("用户更新异步时间，当前线程:{}", Thread.currentThread().getName());
         if (event instanceof UserUpdateEvent) {
             logger.info("事务提交后，监听到用户数据更新事件，用户ID：{}，开始执行数据同步至缓存/ES", ((UserUpdateEvent) event).getUserId());
         }

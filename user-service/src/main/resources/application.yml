@@ -17,6 +17,8 @@ spring:
     name: user-service
   main:
     allow-bean-definition-overriding: true
+  profiles:
+    active: prod
 
   redis:
     databse: 1

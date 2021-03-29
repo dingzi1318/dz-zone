@@ -47,6 +47,11 @@ public class ApiResult<T> {
         return new ApiResult(code, message, null);
     }
 
+    public static ApiResult fail(String message) {
+
+        return new ApiResult(-1, message, null);
+    }
+
     public static ApiResult fail(ResultCode resultCode) {
         return new ApiResult(resultCode.getCode(), resultCode.getMessage());
     }

@@ -1,8 +1,9 @@
-package com.demo.validator.model;
+package com.user.validator.model;
 
-import com.demo.validator.constraint.NumberValidator;
-import com.demo.validator.group.AddGroup;
-import com.demo.validator.group.UpdateGroup;
+
+import com.user.validator.constraint.NumberValidator;
+import com.user.validator.group.AddGroup;
+import com.user.validator.group.UpdateGroup;
 import lombok.Data;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotBlank;
@@ -30,16 +31,16 @@ public class Topic {
     private String id;
 
     /** 话题标题(名称), 必填*/
-    @NotBlank
-    @Length(max = 30)
+    @NotBlank(message = "话题标题不能为空", groups = {AddGroup.class})
+    @Length(max = 30, message = "话题标题长度不能超过30", groups = {AddGroup.class, UpdateGroup.class})
     private String title;
 
     /** 图标，必填*/
-    @NotBlank
+    @NotBlank(message = "图标不能为空", groups = {AddGroup.class})
     private String iconUrl;
 
     /** 话题描述, 必填*/
-    @NotBlank
+    @NotBlank(message = "话题描述不能为空", groups = {AddGroup.class})
     @Length(max = 100)
     private String description;
 
@@ -55,7 +56,7 @@ public class Topic {
     private String cateId;
 
     /** 开启状态: 0-关闭 1-开启, 必填*/
-    @NotNull
+    @NotNull(groups = {AddGroup.class})
     @NumberValidator
     @Range(min = 0, max = 1)
     private String switchStatus;

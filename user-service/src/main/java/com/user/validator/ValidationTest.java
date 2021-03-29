@@ -1,14 +1,14 @@
-package com.demo.validator;
+package com.user.validator;
 
 import com.alibaba.fastjson.JSON;
-import com.demo.learn.design.factory.FeJsonResult;
-import com.demo.validator.group.AddGroup;
-import com.demo.validator.group.UpdateGroup;
-import com.demo.validator.model.MyAccount;
-import com.demo.validator.model.Topic;
-import com.demo.validator.util.TopicValidateUtil;
-import com.demo.validator.util.ValidationUtil;
+import com.user.dto.ApiResult;
+import com.user.validator.group.UpdateGroup;
+import com.user.validator.model.MyAccount;
+import com.user.validator.model.Topic;
+import com.user.validator.util.TopicValidateUtil;
+import com.user.validator.util.ValidationUtil;
 import org.junit.Test;
+
 
 /**
  * @Description TODO
@@ -53,7 +53,7 @@ public class ValidationTest {
     public void topicSubmitTest() {
         Topic param = new Topic();
         param.setId(null);
-        FeJsonResult feJsonResult = TopicValidateUtil.validateBean(param, UpdateGroup.class);
+        ApiResult feJsonResult = TopicValidateUtil.validateBean(param, UpdateGroup.class);
         System.out.println(JSON.toJSONString(feJsonResult));
     }
 }

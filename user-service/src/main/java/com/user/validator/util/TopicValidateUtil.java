@@ -1,6 +1,6 @@
-package com.demo.validator.util;
+package com.user.validator.util;
 
-import com.demo.learn.design.factory.FeJsonResult;
+import com.user.dto.ApiResult;
 import org.hibernate.validator.HibernateValidator;
 import org.springframework.util.CollectionUtils;
 
@@ -37,14 +37,14 @@ public final class TopicValidateUtil {
      * @param groups 校验组
      * @return FeJsonResult 前端返回数据结构
      */
-    public static <T> FeJsonResult validateBean(T t, Class<?>... groups) {
+    public static <T> ApiResult validateBean(T t, Class<?>... groups) {
         Set<ConstraintViolation<T>> violationSet = VALIDATOR.validate(t, groups);
         if (CollectionUtils.isEmpty(violationSet)) {
             return null;
         }
         String invalidMessage = violationSet.stream().findFirst()
                 .map(ConstraintViolation::getMessage).orElse("话题参数校验失败");
-        return FeJsonResult.fail(invalidMessage);
+        return ApiResult.fail(invalidMessage);
     }
 
     /**
@@ -54,13 +54,13 @@ public final class TopicValidateUtil {
      * @param propertyName 属性名称
      * @return FeJsonResult
      */
-    public static <T> FeJsonResult validateProperty(T obj, String propertyName) {
+    public static <T> ApiResult validateProperty(T obj, String propertyName) {
         Set<ConstraintViolation<T>> violationSet = VALIDATOR.validateProperty(obj, propertyName);
         if (CollectionUtils.isEmpty(violationSet)) {
             return null;
         }
         String invalidMessage = violationSet.stream().findFirst()
                 .map(ConstraintViolation::getMessage).orElse("话题参数校验失败");
-        return FeJsonResult.fail(invalidMessage);
+        return ApiResult.fail(invalidMessage);
     }
 }

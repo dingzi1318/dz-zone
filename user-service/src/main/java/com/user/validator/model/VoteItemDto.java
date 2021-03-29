@@ -1,4 +1,4 @@
-package com.demo.validator.model;
+package com.user.validator.model;
 
 import lombok.Data;
 

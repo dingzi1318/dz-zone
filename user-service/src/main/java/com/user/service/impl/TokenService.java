@@ -6,6 +6,7 @@ import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,6 +18,7 @@ import java.util.UUID;
  * @author dingzi
  */
 @Service
+@Profile("dev")
 public class TokenService implements ITokenService {
 
     private static final Logger LOG = LoggerFactory.getLogger(TokenService.class);
@@ -33,6 +35,7 @@ public class TokenService implements ITokenService {
 
     @Override
     public String createToken() {
+        LOG.info("create token dev");
         String randomUuid = UUID.randomUUID().toString().replace("-", "");
         StringBuilder tokenBuilder = new StringBuilder();
         tokenBuilder.append(REDIS_PREFIX_TOKEN).append(randomUuid);

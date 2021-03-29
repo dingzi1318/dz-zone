@@ -1,7 +1,7 @@
-package com.demo.validator.model;
+package com.user.validator.model;
 
-import com.demo.validator.constraint.DateValidator;
-import com.demo.validator.group.AccountGroup;
+import com.user.validator.constraint.DateValidator;
+import com.user.validator.group.AccountGroup;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.demo.validator.constraint;
+package com.user.validator.constraint;
 
 import org.apache.commons.lang3.math.NumberUtils;
 
@@ -13,7 +13,7 @@ import java.lang.annotation.*;
  *
  * @author dingzi
  */
-@Target(ElementType.FIELD)
+@Target({ElementType.FIELD, ElementType.PARAMETER})
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = {NumberValidator.NumberValidatorInner.class})
